@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Nanito", sans-serif;
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    background: rgb(228, 247, 237);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container .card{
+    width: 400px;
+    height: 300px;
+    background: olivedrab;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px;
+}
+.card .card-title{
+    margin: 12px;
+    color: white;
+}
+.card .card-body label{
+    color: aliceblue;
+}
+#input{
+    outline: 0;
+    border-color: transparent;
+    width: 170px;
+    border-radius: 4px;
+}
+
+#button{
+    font-size: 20px;
+    padding: 4px 10px;
+    border-radius: 5px;
+    outline: 0;
+    border-color: transparent;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: .4s;
+    font-weight: 700;
+}
+.btn{
+    text-align: right;
+}
+#button:hover{
+    background: rebeccapurple;
+    color: aqua;
+}
+.resultText{
+    color: aqua;
+    margin-top: 20px;
+}
+.remaing{
+    color: aquamarine;
+    margin-top: 10px;
+}
+.leargetext{
+    margin-top: 10px;
+    font-size: 25px;
+    color: black;
+    font-weight: 700;
+}

@@ -1,0 +1,28 @@
+.dr{
+    width: 50%;
+    border: 1px solid saddlebrown;
+    margin-left: auto;
+    display: none;
+}
+
+.another{
+    color: blue;
+    font-size: 25px;
+    margin-bottom: 50px;
+    cursor: pointer;
+}
+
+.slider{
+    margin: 200px;
+    text-align: center;
+    width: 400px;
+}
+
+.btns{
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    column-gap: 15px;
+    cursor: pointer;
+    margin-top: 20px;
+}
