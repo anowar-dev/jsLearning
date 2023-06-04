@@ -1,63 +1,63 @@
-// Initialization some values
+// initial values
 let totalLimit = 5;
-let totalwon = 0;
-let totalLost = 0;
 let attempt = 0;
+let totalWon = 0;
+let totalLost = 0;
 
+// finding elements
+const form = document.querySelector('form');
+const guestNumber = document.querySelector('input');
+const check = document.querySelector('#button');
+const result = document.querySelector('.resultText');
+const remaing = document.querySelector('.remaing');
+const lostWon = document.createElement('p');
+const final = document.createElement('p');
 
-// Find elements
-
-let cardBody = document.querySelector('.card-body');
-let form = document.querySelector('form');
-let input = form.querySelector('#input');
-let btn = form.querySelector('#button');
-let resultText = document.querySelector('.resultText');
-let remaing = document.querySelector('.remaing');
-let lostwonMassage = document.createElement('p');
-let wonMassage = document.createElement('p'); 
-
+// add event listener
 form.addEventListener('submit', function(event){
     event.preventDefault();
-    checkResult(input.value); 
+    checkResult(Number(guestNumber.value));
     attempt ++;
-    remaing.innerHTML = `Remaining attempts ${totalLimit-attempt}`;
-    if(attempt >= 5){
-        input.disabled = true;
-        btn.disabled = true;
-        resultText.innerHTML = 'The game is over';
-        if(totalLost < totalwon){
-            wonMassage.innerHTML = 'Congratulation! you are winner';
-            wonMassage.classList.add('leargetext');
-            cardBody.appendChild(wonMassage);
+    if(attempt >=5){
+        guestNumber.disabled = true;
+        check.disabled = true;
+        result.innerHTML = 'Teh game is over';
+        if(totalLost > totalWon){
+            final.classList.add('leargetext');
+            final.innerHTML = 'You are the Faileour';
+            form.appendChild(final);
         }
         else{
-            wonMassage.innerHTML = 'You are the failour';
-            wonMassage.classList.add('leargetext');
-            cardBody.appendChild(wonMassage);
+            final.classList.add('leargetext');
+            final.innerHTML = 'Conngratulation! you are won the game';
+            form.appendChild(final);
         }
     }
     else{
-        input.disabled = false;
-        btn.disabled = false;
+        guestNumber.disabled = false;
+        check.disabled = false;
     }
+    let remaingAttempt = totalLimit-attempt;
+    remaing.innerHTML = `Remaining Attempt ${remaingAttempt}`;
 });
 
-function checkResult(input){
-    let random = getRandomNumber(5);
-    if(input == random){
-        resultText.innerHTML = `You have won the game`;
-        totalwon ++;
-    }
-    else{
-        resultText.innerHTML = `You have lost the game: random was ${random}`;
-        totalLost ++;
-    }
-    lostwonMassage.innerHTML = `Won: ${totalwon} Lost: ${totalLost}`;
-    lostwonMassage.classList.add('leargetext');
-    cardBody.appendChild(lostwonMassage);
+function randomGenerator (limit){
+    return Math.floor(Math.random()*limit)+1;
 }
 
-function getRandomNumber(limit){
-    return Math.floor(Math.random()*limit)+1;
+function checkResult (guestNumber){
+    let generatedRandom = randomGenerator(5);
+    if(guestNumber == generatedRandom){
+        result.innerHTML = 'You are won';
+        totalWon++;
+    }
+    else{
+        result.innerHTML = `Fained the random number was ${generatedRandom}`;
+        totalLost ++;
+    }
+
+    lostWon.classList.add('leargetext');
+    lostWon.innerHTML = `Total lost ${totalLost}. Total win ${totalWon}`;
+    form.appendChild(lostWon);
 }
 
